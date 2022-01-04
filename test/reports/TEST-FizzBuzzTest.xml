@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="FizzBuzzTest" filepath="test/fizz_buzz_test.rb" skipped="0" failures="0" errors="0" tests="1" assertions="7" time="2.600002335384488e-05">
+    <testcase name="test_fizz_buzz" lineno="10" classname="FizzBuzzTest" assertions="7" time="2.600002335384488e-05">
+    </testcase>
+  </testsuite>
+</testsuites>
