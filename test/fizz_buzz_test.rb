@@ -25,7 +25,12 @@ class FizzBuzzTest < Minitest::Test
     assert_equal 'Buzz', fizz_buzz(5)
     assert_equal 'Fizz', fizz_buzz(6)
     assert_equal 'Fizz Buzz', fizz_buzz(15)
-    # assert_equal 'Fizz Buzz', fizz_buzz('X')
+
+    assert_equal 'Fizz Buzz', fizz_buzz(0)
+    e = assert_raises NoMethodError do
+      fizz_buzz('X')
+    end
+    assert_equal e.message.include?("undefined method `zero?'"), true
   end
 
   def test_fizz_buzz2
@@ -36,6 +41,7 @@ class FizzBuzzTest < Minitest::Test
     assert_equal 'Buzz', fizz_buzz2(5)
     assert_equal 'Fizz', fizz_buzz2(6)
     assert_equal 'Fizz Buzz', fizz_buzz2(15)
-    # assert_equal 'Fizz Buzz', fizz_buzz('X')
+    assert_equal '0', fizz_buzz2(0)
+    assert_equal 'X', fizz_buzz2('X')
   end
 end

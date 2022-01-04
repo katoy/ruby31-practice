@@ -15,6 +15,8 @@ end
 DATA = { 3 => 'Fizz', 5 => 'Buzz' }.freeze
 
 def fizz_buzz2(num)
+  return num.to_s if num.to_i.zero?
+
   ret = DATA.map { |d, v| v if (num % d).zero? }
             .compact.join(' ')
 
