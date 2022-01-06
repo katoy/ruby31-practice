@@ -4,6 +4,7 @@ require 'minitest/autorun'
 require 'minitest/reporters'
 require_relative '../lib/rgb'
 
+Minitest::Reporters.use! Minitest::Reporters::ProgressReporter.new
 class RgbTest < Minitest::Test
   def test_to_hex
     assert_equal '#000000', to_hex(0, 0, 0)
