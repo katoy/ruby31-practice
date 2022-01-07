@@ -20,7 +20,7 @@ class ConvertLengthTest < Minitest::Test
     assert_equal 1.23456, convert_length(1.23456, from: :cm, to: :cm)
 
     # from と to が異なる場合は、桁おちする
-    assert_equal 1.2346, convert_length(1.23456, from: :cm, to: :mm)
+    assert_equal 12.346, convert_length(1.23456, from: :cm, to: :mm)
 
     # 引数の省略
     assert_equal 39.37, convert_length(1, to: :in)
