@@ -17,7 +17,7 @@ def to_hex2(r, g, b)
 end
 
 def to_ints2(hex)
-  raise(ArgumentError, 'Invalid format') if hex.scan(/\A#[0-9a-fA-F]{6}\z/).size != 1
+  raise(ArgumentError, 'Invalid format') unless hex.match?(/\A#[0-9a-fA-F]{6}\z/)
 
   hex.scan(/[0-9a-fA-F]{2}/).map(&:hex)
 end
