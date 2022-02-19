@@ -22,6 +22,9 @@ class Gate
     from = STATIONS.index(ticket.stamped_at)
     to = STATIONS.index(@name)
     distance = to - from
-    FARES[distance - 1]
+    ret = FARES[distance - 1]
+    raise(ArgumentError, 'illegal fare') if ret.to_i <= 0
+
+    ret
   end
 end
