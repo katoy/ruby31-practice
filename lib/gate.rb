@@ -3,7 +3,7 @@
 # Gate
 class Gate
   STATIONS = %i[umeda juso mikuni].freeze
-  FARES = [160, 190].freeze
+  FARES = [120, 160, 190].freeze # 129: 入場料金
 
   def initialize(name)
     @name = name
@@ -22,7 +22,8 @@ class Gate
     from = STATIONS.index(ticket.stamped_at)
     to = STATIONS.index(@name)
     distance = to - from
-    ret = FARES[distance - 1]
+    distance *= -1 if distance.negative?
+    ret = FARES[distance]
     raise(ArgumentError, 'illegal fare') if ret.to_i <= 0
 
     ret
