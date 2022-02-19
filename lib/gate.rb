@@ -2,11 +2,21 @@
 
 # Gate
 class Gate
+  attr_writer :name
+
   STATIONS = %i[umeda juso mikuni].freeze
   FARES = [120, 160, 190].freeze # 129: 入場料金
+  GATES = STATIONS.map do |name|
+    gate = Gate.new
+    gate.name = name
+    [name, gate]
+  end.to_h.freeze
 
-  def initialize(name)
-    @name = name
+  def self.find(name)
+    ret = GATES[name.to_sym]
+    raise(ArgumentError, 'bad name') if ret.nil?
+
+    ret
   end
 
   def enter(ticket)
@@ -28,4 +38,6 @@ class Gate
 
     ret
   end
+
+  private_class_method :new
 end

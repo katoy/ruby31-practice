@@ -9,9 +9,26 @@ Minitest::Reporters.use! Minitest::Reporters::ProgressReporter.new
 
 class GateTest < Minitest::Test
   def setup
-    @umeda = Gate.new(:umeda)
-    @juso = Gate.new(:juso)
-    @mikuni = Gate.new(:mikuni)
+    @umeda = Gate.find(:umeda)
+    @juso = Gate.find(:juso)
+    @mikuni = Gate.find(:mikuni)
+  end
+
+  def test_station_name_for_gate
+    e = assert_raises ArgumentError do
+      Gate.find(:xxx)
+    end
+    assert_equal e.message.include?('bad name'), true
+  end
+
+  def test_station_name_by_string
+    assert Gate.find('umeda')
+  end
+
+  def disabled_new_for_gate
+    assert_raises NoMethodError do
+      Gate.new
+    end
   end
 
   def test_umeda_to_juso
