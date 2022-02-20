@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'simplecov'
+
 require 'minitest/autorun'
 require 'minitest/reporters'
 require_relative '../lib/fizz_buzz'

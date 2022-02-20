@@ -15,4 +15,6 @@ group :test do
   gem "minitest-bang" # let!文のサポートを追加
 
   gem "factory_girl" # DBのデータのモックを作成
+
+  gem 'simplecov', require: false
 end 
