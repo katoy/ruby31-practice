@@ -2,25 +2,32 @@
 
 # Ticket
 class Ticket
-  attr_reader :fare, :stamped_at, :stamped2_at
+  attr_reader :fare
 
   def initialize(fare)
     raise(ArgumentError, 'fare is negative') if fare.to_i.negative?
 
     @fare = fare
+    @stampeds = []
+  end
+
+  def unused?
+    @stampeds.size.zero?
+  end
+
+  def using?
+    @stampeds.size == 1
+  end
+
+  def used?
+    @stampeds.size >= 2
   end
 
   def stamp(name)
-    raise(ArgumentError, 'alrady stamped') if @stamped_at
-
-    @stamped_at = name
+    @stampeds << name
   end
 
-  def stamp2(name)
-    raise(ArgumentError, 'alrady stamped2') if @stamped2_at
-
-    raise(ArgumentError, 'no stamped') unless @stamped_at
-
-    @stamped2_at = name
+  def entered_st
+    @stampeds[0]
   end
 end

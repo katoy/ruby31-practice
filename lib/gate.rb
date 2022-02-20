@@ -20,22 +20,24 @@ class Gate
   end
 
   def enter(ticket)
-    return false if ticket.stamped_at || ticket.stamped2_at
+    return false unless ticket.unused?
 
     ticket.stamp(@name)
   end
 
   def exit(ticket)
-    return false if ticket.stamped_at.nil? || ticket.stamped2_at
+    return false unless ticket.using?
 
     return false if ticket.fare < calc_fare(ticket)
 
-    ticket.stamp2(@name)
+    ticket.stamp(@name)
   end
 
   def calc_fare(ticket)
-    from = STATIONS.index(ticket.stamped_at)
+    from = STATIONS.index(ticket.entered_st)
     to = STATIONS.index(@name)
+    raise(ArgumentError, 'illegal stamps') if from == -1 || to == -1
+
     distance = to - from
     distance *= -1 if distance.negative?
     ret = FARES[distance]
