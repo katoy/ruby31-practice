@@ -20,12 +20,17 @@ class Gate
   end
 
   def enter(ticket)
+    return false if ticket.stamped_at || ticket.stamped2_at
+
     ticket.stamp(@name)
   end
 
   def exit(ticket)
-    fare = calc_fare(ticket)
-    fare <= ticket.fare
+    return false if ticket.stamped_at.nil? || ticket.stamped2_at
+
+    return false if ticket.fare < calc_fare(ticket)
+
+    ticket.stamp2(@name)
   end
 
   def calc_fare(ticket)

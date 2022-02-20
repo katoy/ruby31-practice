@@ -50,6 +50,24 @@ class GateTest < Minitest::Test
     assert_equal e.message.include?('fare is negative'), true
   end
 
+  def test_double_enter
+    ticket = Ticket.new(160)
+    assert Gate.find(:umeda).enter(ticket)
+    refute Gate.find(:umeda).enter(ticket)
+  end
+
+  def test_double_exit
+    ticket = Ticket.new(160)
+    assert Gate.find(:umeda).enter(ticket)
+    assert Gate.find(:juso).exit(ticket)
+    refute Gate.find(:juso).exit(ticket)
+  end
+
+  def test_without_enter_can_not_exit
+    ticket = Ticket.new(160)
+    refute Gate.find(:umeda).exit(ticket)
+  end
+
   TRAVELS = {
     umeda: { umeda: 120, juso: 160, mikuni: 190 }.freeze,
     juso: { umeda: 160, juso: 120, mikuni: 160 }.freeze,
