@@ -2,15 +2,15 @@
 
 # Gate
 class Gate
-  attr_writer :name
+  attr_reader :name
+
+  def initialize(name)
+    @name = name
+  end
 
   STATIONS = %i[umeda juso mikuni].freeze
-  FARES = [120, 160, 190].freeze # 129: 入場料金
-  GATES = STATIONS.map do |name|
-    gate = Gate.new
-    gate.name = name
-    [name, gate]
-  end.to_h.freeze
+  FARES = [120, 160, 190].freeze # 120: 入場料金
+  GATES = STATIONS.map { |name| [name, Gate.new(name)] }.to_h.freeze
 
   def self.find(name)
     ret = GATES[name.to_sym]
