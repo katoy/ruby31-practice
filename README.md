@@ -9,7 +9,9 @@
 
 <https://github.com/minitest-reporters/minitest-reporters>
 
-## mermail で書いたシーケンス図の例
+## mermail で書いた例
+
+### シーケンス図
 
 ```mermaid
 %%  {init: {'securityLevel': 'loose', 'theme':'base'}} 
@@ -34,4 +36,23 @@ T-->> - G2: 乗車駅
 G2-->>G2: 乗車駅からの運賃を計算する。
 
 G2-->>A: 運賃 <= 金額 なら true<br/>そうでなければ false
+```
+
+### チケットの状態遷移図
+
+```mermaid
+%%  {init: {'securityLevel': 'loose', 'theme':'base'}} 
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#888888', 'textColor': '#88aaaa', 'lineColor':'#ff8800'}}}%%
+
+stateDiagram-v2
+    [*] --> Unused : new<br/>(購入)
+    Unused --> Entering : enter
+    Entering --> Used : exit
+    Used --> [*]
+    Error --> [*]
+
+    Unused --> Error : exit
+    Entering --> Error : enter
+    Used --> Error : enter
+    Used --> Error : exit
 ```
