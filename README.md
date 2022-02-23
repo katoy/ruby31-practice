@@ -3,8 +3,35 @@
 
 書籍「プロを目指す人のためのRuby入門 改訂2版（2021年12月発売）」のサンプルコードを、自分なりに変更してみていきます。
 
-参考：
+## 参考
 
 <https://github.com/JunichiIto/ruby-book-codes-v2>
 
 <https://github.com/minitest-reporters/minitest-reporters>
+
+## mermail で書いたシーケンス図の例
+
+```mermaid
+%%  {init: {'securityLevel': 'loose', 'theme':'base'}} 
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#aaffff', 'edgeLabelBackground':'#ffffee', 'tertiaryColor': '#fff0f0'}}}%%
+
+sequenceDiagram
+
+participant A as 乗客
+participant G1 as 駅<br/>(umeda)
+participant G2 as 駅<br/>(mikuni)
+participant T as チケット<br/>(Ticket)
+
+A->>T: 購入
+A->>G1: enter()
+G1->>T: stamp()
+
+A->>G2: exit()
+G2->> + T: fare()
+T-->> - G2: 金額
+G2->> + T: stamped_at()
+T-->> - G2: 乗車駅
+G2-->>G2: 乗車駅からの運賃を計算する。
+
+G2-->>A: 運賃 <= 金額 なら true<br/>そうでなければ false
+```
