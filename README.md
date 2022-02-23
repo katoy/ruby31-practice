@@ -9,7 +9,7 @@
 
 <https://github.com/minitest-reporters/minitest-reporters>
 
-## mermail で書いた例
+## mermaid で書いた例
 
 ### シーケンス図
 
