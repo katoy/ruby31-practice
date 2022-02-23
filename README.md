@@ -13,7 +13,7 @@
 
 ```mermaid
 %%  {init: {'securityLevel': 'loose', 'theme':'base'}} 
-%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#aaffff', 'edgeLabelBackground':'#ffffee', 'tertiaryColor': '#fff0f0'}}}%%
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#888888', 'textColor': '#88aaaa'}}}%%
 
 sequenceDiagram
 
