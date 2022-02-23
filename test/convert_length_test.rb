@@ -1,13 +1,7 @@
 # frozen_string_literal: true
 
-require 'simplecov'
-
-require 'minitest/autorun'
-require 'minitest/reporters'
+require_relative './test_helper'
 require_relative '../lib/convert_length'
-
-Minitest::Reporters.use! Minitest::Reporters::ProgressReporter.new
-
 class ConvertLengthTest < Minitest::Test
   def test_convert_length
     assert_equal 39.37, convert_length(1, from: :m, to: :in)

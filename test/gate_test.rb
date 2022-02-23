@@ -1,15 +1,8 @@
 # frozen_string_literal: true
 
-require 'simplecov'
-SimpleCov.start
-
-require 'minitest/autorun'
-require 'minitest/reporters'
+require_relative './test_helper'
 require_relative '../lib/gate'
 require_relative '../lib/ticket'
-
-Minitest::Reporters.use! Minitest::Reporters::ProgressReporter.new
-
 class GateTest < Minitest::Test
   def setup
     @umeda = Gate.find(:umeda)

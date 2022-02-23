@@ -1,13 +1,7 @@
 # frozen_string_literal: true
 
-require 'simplecov'
-
-require 'minitest/autorun'
-require 'minitest/reporters'
+require_relative './test_helper'
 require_relative '../lib/convert_hash_syntax'
-
-Minitest::Reporters.use! Minitest::Reporters::ProgressReporter.new
-
 class ConvertHashSyntaxTest < Minitest::Test
   def x_eval(x)
     eval(x)
