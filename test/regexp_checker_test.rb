@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative './test_helper'
 require_relative '../lib/regexp_checker'
 
@@ -26,7 +28,7 @@ class RegexpCheckerTest < Minitest::Test
 
     assert_output(expected) do
       $stdin = io
-      RegexpChecker.new.main
+      RegexpChecker.main
       $stdin = STDIN
     end
   end
@@ -46,7 +48,7 @@ class RegexpCheckerTest < Minitest::Test
 
     assert_output(expected) do
       $stdin = io
-      RegexpChecker.new.main
+      RegexpChecker.main
       $stdin = STDIN
     end
   end

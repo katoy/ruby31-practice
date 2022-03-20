@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 # 小mんどラインアプリ
-class RegexpChecker
-  def main
+module RegexpChecker
+  def self.main
     params = read_params
     matches = find_matches(text: params[:text], regexp: params[:regexp])
     puts show_matches(matches)
   end
 
-  def read_params
+  def self.read_params
     print 'Text?: '
     text = gets.chomp
 
@@ -22,11 +22,11 @@ class RegexpChecker
     end
   end
 
-  def find_matches(text: nil, regexp: nil)
+  def self.find_matches(text: nil, regexp: nil)
     text.scan(regexp)
   end
 
-  def show_matches(matches)
+  def self.show_matches(matches)
     return 'Nothing matched.' if matches.size.zero?
 
     "Matched: #{matches.map { |x| "'#{x}'" }.join(', ')}"
@@ -34,4 +34,4 @@ class RegexpChecker
 end
 
 # コマンドラインで実行する
-RegexpChecker.new.main if __FILE__ == $PROGRAM_NAME
+RegexpChecker.main if __FILE__ == $PROGRAM_NAME
