@@ -7,6 +7,7 @@ class RainbowableTest < Minitest::Test
   def setup
     String.include Rainbowable
     Array.include Rainbowable
+    Rainbowable.reset
   end
 
   def test_rainbow
@@ -17,13 +18,51 @@ class RainbowableTest < Minitest::Test
     assert_equal expected, [1, 2, 3].rainbow
   end
 
-  def test_rainbow_with_color_ary
-    expected = "\e[31ma\e[32mb\e[31mc\e[32md\e[31me\e[32mf\e[0m"
-    assert_equal expected, 'abcdef'.rainbow([31, 32])
+  def test_rainbowable_defalt_colors
+    expected = [31, 32, 33, 34, 35, 36]
+    assert_equal expected, Rainbowable::DEFAULT_COLORS
+  end
 
-    expected = "\e[31ma\e[32mb\e[33mc\e[34md\e[35me\e[36mf\e[0m"
+  def test_rainbowable_rainbow_colors_set_and_get
+    expected_default = [31, 32, 33, 34, 35, 36]
+    assert_equal expected_default, Rainbowable.rainbow_colors
+
+    expected = [32, 31]
+    Rainbowable.rainbow_colors = [32, 31]
+    assert_equal expected, Rainbowable.rainbow_colors
+
+    colors =  Rainbowable.rainbow_colors
+    colors[0] = 1
+    assert_equal expected, Rainbowable.rainbow_colors
+
+    Rainbowable.reset
+    assert_equal expected_default, Rainbowable.rainbow_colors
+
+    colors =  Rainbowable.rainbow_colors
+    colors[0] = 1
+    assert_equal expected_default, Rainbowable.rainbow_colors
+  end
+
+  def test_rainbow_with_parameter
+    expected_default = "\e[31ma\e[32mb\e[33mc\e[34md\e[35me\e[36mf\e[0m"
+    expected = "\e[32ma\e[31mb\e[32mc\e[31md\e[32me\e[31mf\e[0m"
+
+    assert_equal expected_default, 'abcdef'.rainbow([])
+    assert_equal expected_default, 'abcdef'.rainbow(nil)
+    assert_equal expected_default, 'abcdef'.rainbow
+    assert_equal expected, 'abcdef'.rainbow([32, 31])
+    assert_equal expected_default, 'abcdef'.rainbow
+
+    Rainbowable.rainbow_colors = [32, 31]
+    assert_equal expected, 'abcdef'.rainbow
     assert_equal expected, 'abcdef'.rainbow([])
-
     assert_equal expected, 'abcdef'.rainbow(nil)
+
+    Rainbowable.reset
+    assert_equal expected_default, 'abcdef'.rainbow
+    assert_equal expected_default, 'abcdef'.rainbow([])
+    assert_equal expected_default, 'abcdef'.rainbow(nil)
+    assert_equal expected, 'abcdef'.rainbow([32, 31])
+    assert_equal expected_default, 'abcdef'.rainbow
   end
 end
