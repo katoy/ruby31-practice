@@ -6,6 +6,8 @@ group :test do
   # gem "minitest-rails"
   # gem "minitest-rails-capybara" # capybaraで結合テストできるようにする
 
+  gem 'rspec'
+
   # レポートの書式を変更する
   gem "minitest-reporters" # テスト結果の表示を整形
 
