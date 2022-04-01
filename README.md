@@ -9,6 +9,8 @@
 
 <https://github.com/minitest-reporters/minitest-reporters>
 
+<https://qiita.com/jnchito/items/60ea1389d00e72b729e7>
+
 ## mermaid で書いた例
 
 ### シーケンス図
