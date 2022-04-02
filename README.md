@@ -16,6 +16,7 @@ $open coverage/index.html
 $rzke spec
 $open coverage/index.html
 ```
+
 ## 参考
 
 <https://github.com/JunichiIto/ruby-book-codes-v2>
