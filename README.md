@@ -3,6 +3,19 @@
 
 書籍「プロを目指す人のためのRuby入門 改訂2版（2021年12月発売）」のサンプルコードを、自分なりに変更してみていきます。
 
+# 実行方法
+
+```script
+$rake -T
+rake spec  # Run RSpec code examples
+rake test  # Run tests
+
+$rake
+$open coverage/index.html
+
+$rzke spec
+$open coverage/index.html
+```
 ## 参考
 
 <https://github.com/JunichiIto/ruby-book-codes-v2>
