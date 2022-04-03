@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require './spec/spec_helper'
-require './lib/rgb'
+require_relative 'spec_helper'
+require_relative '../lib/rgb'
 
 RSpec.describe 'RGB' do
   describe '#to_hex' do

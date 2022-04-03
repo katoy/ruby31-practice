@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require './spec/spec_helper'
-require './lib/fizz_buzz'
+require_relative 'spec_helper'
+require_relative '../lib/fizz_buzz'
 
 RSpec.describe 'Fizz Buzz' do
   context 'test' do

@@ -13,8 +13,12 @@ rake test  # Run tests
 $rake
 $open coverage/index.html
 
-$rzke spec
+$rake spec
 $open coverage/index.html
+
+# 結果を slack に投稿する (webhook を設定し、環境変数 SLACK_WEBHOOK_URL にそれを設定すること)
+rspec spec -f SlackFormatter  
+
 ```
 
 ## 参考

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require './spec/spec_helper'
-require './lib/convert_length'
+require_relative 'spec_helper'
+require_relative '../lib/convert_length'
 
 RSpec.describe 'Convert length' do
   it 'returns valid value' do
