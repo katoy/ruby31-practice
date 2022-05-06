@@ -21,13 +21,25 @@ rspec spec -f SlackFormatter
 
 ```
 
+# Docker で実行する
+
+```script
+$ docker-compoxe up -d
+$ docker-compose exec app bundle exec rspec
+~~~
+
 ## 参考
 
-<https://github.com/JunichiIto/ruby-book-codes-v2>
+- https://github.com/JunichiIto/ruby-book-codes-v2
 
-<https://github.com/minitest-reporters/minitest-reporters>
+- https://github.com/minitest-reporters/minitest-reporters
 
-<https://qiita.com/jnchito/items/60ea1389d00e72b729e7>
+- https://qiita.com/jnchito/items/60ea1389d00e72b729e7
+
+- https://qiita.com/eighty8/items/124cd7a51d84df1d4a46
+  RSpecを単体で使いたい on Docker
+
+
 
 ## mermaid で書いた例
 

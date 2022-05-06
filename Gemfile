@@ -11,6 +11,8 @@ group :test do
   # レポートの書式を変更する
   gem "minitest-reporters" # テスト結果の表示を整形
 
+  gem 'debug'
+
   # 機能追加系
   gem "minitest-stub_any_instance" # メソッドmockを追加できる様にする
 
