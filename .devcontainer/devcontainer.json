@@ -1,0 +1,31 @@
+{
+  "name": "spp",
+  "dockerComposeFile": [
+    "../docker-compose.yml"
+  ],
+  "service": "app",
+  "workspaceFolder": "/ruby31-practice",
+  "extensions": [
+    "rebornix.ruby",
+    "hnw.vscode-auto-open-markdown-preview",
+    "MS-CEINTL.vscode-language-pack-ja",
+    "bpruitt-goddard.mermaid-markdown-syntax-highlighting",
+    "rebornix.ruby",
+    "wingrunr21.vscode-ruby",
+    "bierner.markdown-preview-github-styles",
+    "donjayamanne.githistory",
+    "yzhang.markdown-all-in-one",
+    "oderwat.indent-rainbow",
+    "usernamehw.indent-one-space",
+    "DmitryDorofeev.empty-indent",
+    "CraigMaslowski.erb"
+  ],
+  "settings": {
+    "editor.tabSize": 2,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "terminal.integrated.shell.linux": "/bin/ash",
+    "editor.formatOnSave": true
+  },
+  "postCreateCommand": "bundle install"
+}
