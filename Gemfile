@@ -21,6 +21,7 @@ group :test do
   gem "factory_girl" # DBのデータのモックを作成
 
   gem 'simplecov', require: false
+  gem 'simplecov-cobertura'
 
   gem 'slack-notifier'
-end 
+end

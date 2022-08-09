@@ -15,6 +15,7 @@
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 require 'simplecov'
+require 'simplecov-cobertura'
 require_relative '../lib/slack_formatter'
 
 RSpec.configure do |config|
@@ -103,5 +104,11 @@ RSpec.configure do |config|
     SimpleCov.coverage_dir(dir)
   end
 
-  SimpleCov.start
+  SimpleCov.start do
+    SimpleCov::Formatter::HTMLFormatter
+    SimpleCov::Formatter::CoberturaFormatter
+
+    enable_coverage :branch
+    primary_coverage :branch
+  end
 end
