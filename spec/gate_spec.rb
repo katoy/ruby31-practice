@@ -9,6 +9,9 @@ RSpec.describe 'Gate' do
   let(:juso) { Gate.find(:juso) }
   let(:mikuni) { Gate.find(:mikuni) }
 
+  let(:ticket) { Ticket.new(200) }
+  let(:ticket_one) { Ticket.new(1) }
+
   describe 'Umeda to Juso' do
     it 'fare is not enough' do
       ticket = Ticket.new(150)
@@ -46,5 +49,52 @@ RSpec.describe 'Gate' do
       juso.enter(ticket)
       expect(mikuni.exit(ticket)).to be_falsey
     end
+  end
+
+  describe 'self.find' do
+    context 'valid name' do
+      it { expect(Gate.find('juso').nil?).to eq false }
+    end
+
+    context 'invalid name' do
+      it do
+        expect do
+          Gate.find('x')
+        end.to raise_error(ArgumentError, /bad name/)
+      end
+    end
+  end
+
+  describe 'enter' do
+    context 'with unused ticke' do
+      it { expect(juso.enter(ticket)).to eq [:juso] }
+    end
+
+    context 'with used ticke' do
+      before { juso.enter(ticket) }
+
+      it { expect(juso.enter(ticket)).to eq false }
+    end
+  end
+
+  describe 'exit' do
+    context 'with unused ticke' do
+      it { expect(juso.exit(ticket)).to eq false }
+    end
+
+    context 'with used ticke' do
+      before { juso.enter(ticket) }
+
+      it { expect(mikuni.exit(ticket)).to eq [:juso, :mikuni] }
+    end
+
+    context 'with 料金不足のチケット' do
+      before { juso.enter(ticket_one) }
+
+      it { expect(mikuni.exit(ticket_one)).to eq false }
+    end
+  end
+
+  describe 'calk_fare' do
   end
 end
