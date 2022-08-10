@@ -17,14 +17,14 @@ $rake spec
 $open coverage/index.html
 
 # 結果を slack に投稿する (webhook を設定し、環境変数 SLACK_WEBHOOK_URL にそれを設定すること)
-rspec spec -f SlackFormatter  
+rspec spec -f SlackFormatter
 
 ```
 
 # Docker で実行する
 
 ```script
-$ docker-compoxe up -d
+$ docker-compose up -d
 $ docker-compose exec app bundle exec rspec
 ~~~
 
@@ -46,7 +46,7 @@ $ docker-compose exec app bundle exec rspec
 ### シーケンス図
 
 ```mermaid
-%%  {init: {'securityLevel': 'loose', 'theme':'base'}} 
+%%  {init: {'securityLevel': 'loose', 'theme':'base'}}
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#888888', 'textColor': '#88aaaa'}}}%%
 
 sequenceDiagram
@@ -73,7 +73,7 @@ G2-->>A: 運賃 <= 金額 なら true<br/>そうでなければ false
 ### チケットの状態遷移図
 
 ```mermaid
-%%  {init: {'securityLevel': 'loose', 'theme':'base'}} 
+%%  {init: {'securityLevel': 'loose', 'theme':'base'}}
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#888888', 'textColor': '#88aaaa', 'lineColor':'#ff8800'}}}%%
 
 stateDiagram-v2

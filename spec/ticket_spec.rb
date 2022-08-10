@@ -4,8 +4,8 @@ require_relative 'spec_helper'
 require_relative '../lib/ticket'
 
 RSpec.describe 'Ticket' do
-  context 'initializer' do
-    it 'erro when fair < 0' do
+  describe 'initializer' do
+    it 'Error when fair < 0' do
       expect do
         Ticket.new(-1)
       end.to raise_error(ArgumentError, /fare is negative/)

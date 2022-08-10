@@ -35,13 +35,15 @@ class Gate
 
   def calc_fare(ticket)
     from = STATIONS.index(ticket.entered_st)
+    raise(ArgumentError, "illegal stamp: #{ticket.entered_st}") if from.nil?
+
     to = STATIONS.index(@name)
-    raise(ArgumentError, 'illegal stamps') if from == -1 || to == -1
+    raise(ArgumentError, "illegal stamp: #{@name}") if to.nil?
 
     distance = to - from
     distance *= -1 if distance.negative?
     ret = FARES[distance]
-    raise(ArgumentError, 'illegal fare') if ret.to_i <= 0
+    raise(ArgumentError, 'illegal fare') if ret.to_i <= 0 # 料金表 FARES の設定ミス
 
     ret
   end

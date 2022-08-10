@@ -110,5 +110,7 @@ RSpec.configure do |config|
 
     enable_coverage :branch
     primary_coverage :branch
+
+    add_filter 'spec/'
   end
 end
