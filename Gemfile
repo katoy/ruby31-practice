@@ -1,5 +1,15 @@
 source "https://rubygems.org"
 
+gem 'debug'
+gem 'ruby-debug-ide'
+# gem 'debase'
+gem 'rcodetools'
+gem 'fastri'
+
+group :development do
+  gem 'rubocop'
+end
+
 group :test do
   # 必須
   gem "minitest"
@@ -11,7 +21,6 @@ group :test do
   # レポートの書式を変更する
   gem "minitest-reporters" # テスト結果の表示を整形
 
-  gem 'debug'
 
   # 機能追加系
   gem "minitest-stub_any_instance" # メソッドmockを追加できる様にする

@@ -1,31 +1,32 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.245.0/containers/docker-existing-docker-compose
+// If you want to run as a non-root user in the container, see .devcontainer/docker-compose.yml.
 {
-  "name": "spp",
-  "dockerComposeFile": [
-    "../docker-compose.yml"
-  ],
-  "service": "app",
-  "workspaceFolder": "/ruby31-practice",
-  "extensions": [
-    "rebornix.ruby",
-    "hnw.vscode-auto-open-markdown-preview",
-    "MS-CEINTL.vscode-language-pack-ja",
-    "bpruitt-goddard.mermaid-markdown-syntax-highlighting",
-    "rebornix.ruby",
-    "wingrunr21.vscode-ruby",
-    "bierner.markdown-preview-github-styles",
-    "donjayamanne.githistory",
-    "yzhang.markdown-all-in-one",
-    "oderwat.indent-rainbow",
-    "usernamehw.indent-one-space",
-    "DmitryDorofeev.empty-indent",
-    "CraigMaslowski.erb"
-  ],
-  "settings": {
-    "editor.tabSize": 2,
-    "files.insertFinalNewline": true,
-    "files.trimFinalNewlines": true,
-    "terminal.integrated.shell.linux": "/bin/ash",
-    "editor.formatOnSave": true
-  },
-  "postCreateCommand": "bundle install"
+	"name": "Existing Docker Compose (Extend)",
+
+	// Update the 'dockerComposeFile' list if you have more compose files or use different names.
+	// The .devcontainer/docker-compose.yml file contains any overrides you need/want to make.
+	"dockerComposeFile": [
+		"../docker-compose.yml"
+	],
+
+	// The 'service' property is the name of the service for the container that VS Code should
+	// use. Update this value and .devcontainer/docker-compose.yml to the real service name.
+	"service": "app",
+
+	// The optional 'workspaceFolder' property is the path VS Code should open by default when
+	// connected. This is typically a file mount in .devcontainer/docker-compose.yml
+	"workspaceFolder": "/ruby31-practice",
+
+	// リモート先のVS Codeにインストールする拡張機能
+	"extensions": [
+		"ruby-rubocop",
+
+		"rebornix.ruby",
+		"wingrunr21.vscode-ruby",
+		"misogi.ruby-rubocop",
+		"Thadeu.vscode-run-rspec-file",
+		"mnmallea.rspec-debug",
+		"castwide.solargraph"
+	]
 }
