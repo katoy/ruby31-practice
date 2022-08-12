@@ -17,6 +17,7 @@
 require 'simplecov'
 require 'simplecov-cobertura'
 require_relative '../lib/slack_formatter'
+require 'vcr'
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
@@ -113,4 +114,12 @@ RSpec.configure do |config|
 
     add_filter 'spec/'
   end
+end
+
+VCR.configure do |c|
+  c.cassette_library_dir = 'dprv/cassettes'
+  # RSpecの場合は以下の設定をすることで、カセット名を自動的に設定する事が可能  
+  c.configure_rspec_metadata!
+  c.allow_http_connections_when_no_cassette = true  #VCRブロック外のHTTP通信は許可する
+  c.hook_into :webmock # or :fakeweb
 end
