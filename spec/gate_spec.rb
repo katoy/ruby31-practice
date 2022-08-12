@@ -4,7 +4,7 @@ require_relative 'spec_helper'
 require_relative '../lib/gate'
 require_relative '../lib/ticket'
 
-RSpec.describe 'Gate' do
+RSpec.describe Gate do
   let(:umeda) { Gate.find(:umeda) }
   let(:juso) { Gate.find(:juso) }
   let(:mikuni) { Gate.find(:mikuni) }

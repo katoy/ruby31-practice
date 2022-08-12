@@ -18,6 +18,7 @@ require 'simplecov'
 require 'simplecov-cobertura'
 require_relative '../lib/slack_formatter'
 require 'vcr'
+require 'active_support/testing/time_helpers'
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
@@ -100,6 +101,8 @@ RSpec.configure do |config|
   #   # as the one that triggered the failure.
   #   Kernel.srand config.seed
 
+  config.include ActiveSupport::Testing::TimeHelpers
+
   if ENV['CIRCLE_ARTIFACTS']
     dir = File.join(ENV['CIRCLE_ARTIFACTS'], 'coverage')
     SimpleCov.coverage_dir(dir)
@@ -118,8 +121,8 @@ end
 
 VCR.configure do |c|
   c.cassette_library_dir = 'dprv/cassettes'
-  # RSpecの場合は以下の設定をすることで、カセット名を自動的に設定する事が可能  
+  # RSpecの場合は以下の設定をすることで、カセット名を自動的に設定する事が可能
   c.configure_rspec_metadata!
-  c.allow_http_connections_when_no_cassette = true  #VCRブロック外のHTTP通信は許可する
+  c.allow_http_connections_when_no_cassette = true # VCRブロック外のHTTP通信は許可する
   c.hook_into :webmock # or :fakeweb
 end

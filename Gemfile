@@ -8,6 +8,8 @@ gem 'ruby-debug-ide'
 # gem 'debase'
 gem 'rcodetools'
 
+gem 'faker'
+
 group :development do
   gem 'rubocop'
 end
@@ -35,6 +37,8 @@ group :test do
 
   gem 'slack-notifier'
 
-   gem 'vcr'
-   gem 'webmock'
+  gem 'vcr'
+  gem 'webmock'
+
+  gem 'activesupport'
 end

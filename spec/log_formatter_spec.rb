@@ -7,12 +7,12 @@ require 'net/http'
 require 'uri'
 require 'json'
 
-RSpec.describe 'LogFormatter' do
+RSpec.describe LogFormatter do
   describe 'self.format_log' do
     context 'log-data from url' do
       let(:url) { 'https://samples.jnito.com/access-log.json' }
       let(:json_data) do
-        log_data = Net::HTTP.get(URI.parse(url)) 
+        log_data = Net::HTTP.get(URI.parse(url))
         JSON.parse(log_data, symbolize_names: true)
       end
 
@@ -82,7 +82,7 @@ RSpec.describe 'LogFormatter' do
             "path": '/products/2',
             "status": 200,
             "duration": 1000
-          },
+          }
         ]
       end
 

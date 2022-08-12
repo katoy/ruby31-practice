@@ -3,7 +3,7 @@
 require_relative 'spec_helper'
 require_relative '../lib/effects'
 
-RSpec.describe 'Effects' do
+RSpec.describe Effects do
   describe 'reverse' do
     it { expect(Effects.reverse.call('Ruby is fun!')).to eq 'ybuR si !nuf' }
     it { expect(Effects.reverse.call('')).to eq '' }

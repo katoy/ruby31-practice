@@ -3,7 +3,7 @@
 require_relative 'spec_helper'
 require_relative '../lib/ticket'
 
-RSpec.describe 'Ticket' do
+RSpec.describe Ticket do
   describe 'initializer' do
     it 'Error when fair < 0' do
       expect do
@@ -16,4 +16,10 @@ RSpec.describe 'Ticket' do
       expect(t.nil?).to eq false
     end
   end
+
+  # unused?
+  # using?
+  # used?
+  # stamp(name)
+  # entered_st
 end
