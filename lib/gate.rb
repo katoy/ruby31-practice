@@ -28,13 +28,17 @@ class Gate
   def exit(ticket)
     return false unless ticket.using?
 
+    check_riding_time(ticket)
+
     return false if ticket.fare < calc_fare(ticket)
 
     ticket.stamp(@name)
   end
 
   def calc_fare(ticket)
-    from = STATIONS.index(ticket.entered_st)
+    check_riding_time(ticket)
+
+    from = STATIONS.index(ticket.entered_st[:name])
     raise(ArgumentError, "illegal stamp: #{ticket.entered_st}") if from.nil?
 
     to = STATIONS.index(@name)
@@ -49,4 +53,11 @@ class Gate
   end
 
   private_class_method :new
+
+  private
+
+  def check_riding_time(ticket)
+    riding_time = Time.zone.now - ticket.stampeds[0][:time]
+    raise(ArgumentError, 'illegal time_stamp') if riding_time <= 0 || riding_time > 2.hours
+  end
 end

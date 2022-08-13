@@ -2,7 +2,7 @@
 
 # Ticket
 class Ticket
-  attr_reader :fare
+  attr_reader :fare, :stampeds
 
   def initialize(fare)
     raise(ArgumentError, 'fare is negative') if fare.to_i.negative?
@@ -24,7 +24,7 @@ class Ticket
   end
 
   def stamp(name)
-    @stampeds << name
+    @stampeds << { name: name.to_sym, time: Time.zone.now }
   end
 
   def entered_st

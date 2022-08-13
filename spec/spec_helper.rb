@@ -18,6 +18,7 @@ require 'simplecov'
 require 'simplecov-cobertura'
 require_relative '../lib/slack_formatter'
 require 'vcr'
+require 'active_support/all'
 require 'active_support/testing/time_helpers'
 
 RSpec.configure do |config|
@@ -102,6 +103,7 @@ RSpec.configure do |config|
   #   Kernel.srand config.seed
 
   config.include ActiveSupport::Testing::TimeHelpers
+  Time.zone = 'Asia/Tokyo'
 
   if ENV['CIRCLE_ARTIFACTS']
     dir = File.join(ENV['CIRCLE_ARTIFACTS'], 'coverage')

@@ -13,6 +13,8 @@ RSpec.describe Gate do
   let(:ticket) { Ticket.new(200) }
   let(:ticket_one) { Ticket.new(1) }
 
+  let(:time_one) { Time.zone.parse('2022-10-01 12:13:14') }
+
   describe 'new' do
     context 'is private' do
       it do
@@ -78,7 +80,11 @@ RSpec.describe Gate do
 
   describe 'enter' do
     context 'with unused ticke' do
-      it { expect(juso.enter(ticket)).to eq [:juso] }
+      it do
+        ret = juso.enter(ticket)
+        expect(ret.size).to eq 1
+        expect(ret[0][:name]).to eq :juso
+      end
     end
 
     context 'with used ticke' do
@@ -96,7 +102,12 @@ RSpec.describe Gate do
     context 'with used ticke' do
       before { juso.enter(ticket) }
 
-      it { expect(mikuni.exit(ticket)).to eq %i[juso mikuni] }
+      it do
+        ret = mikuni.exit(ticket)
+        expect(ret.size).to eq 2
+        expect(ret[0][:name]).to eq(:juso)
+        expect(ret[1][:name]).to eq(:mikuni)
+      end
     end
 
     context 'with 料金不足のチケット' do
@@ -141,7 +152,40 @@ RSpec.describe Gate do
       it do
         expect do
           juso.calc_fare(ticket)
-        end.to raise_error(ArgumentError, /illegal stamp: xxx/)
+        end.to raise_error(ArgumentError, /illegal stamp: {:name=>:xxx/)
+      end
+    end
+
+    context '乗車時間のチェック' do
+      before { travel_to(time_one) { umeda.enter(ticket) } }
+
+      context '乗車時間 == 0' do
+        it do
+          travel_to(time_one) do
+            umeda.enter(ticket)
+            expect do
+              juso.calc_fare(ticket)
+            end.to raise_error(ArgumentError, 'illegal time_stamp')
+          end
+        end
+      end
+
+      context '乗車時間 120 分' do
+        it do
+          travel_to(time_one + 2.hours) do
+            expect(juso.calc_fare(ticket)).to eq 160
+          end
+        end
+      end
+
+      context '乗車時間 120 分 1 秒' do
+        it do
+          travel_to(time_one + 2.hours + 1.second) do
+            expect do
+              juso.calc_fare(ticket)
+            end.to raise_error(ArgumentError, 'illegal time_stamp')
+          end
+        end
       end
     end
   end
