@@ -39,7 +39,8 @@ $ docker-compose exec app bundle exec rspec
 - https://qiita.com/eighty8/items/124cd7a51d84df1d4a46
   RSpecを単体で使いたい on Docker
 
-
+- https://t-wada.hatenadiary.jp/entry/20100801/rspec_3rd_iter
+  RSpec の入門とその一歩先へ、第3イテレーション
 
 ## mermaid で書いた例
 
