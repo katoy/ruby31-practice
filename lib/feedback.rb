@@ -2,7 +2,7 @@
 
 # Feedback
 class Feedback
-  attr_reader :subject, :likes, :dislikes
+  attr_reader :subject, :likes, :dislikes, :nudge
 
   def initialize(**args)
     @subject = args[:subject] || 'default'
