@@ -47,7 +47,6 @@ RSpec.describe Ticket do
       before do
         travel_to(time_one) { umeda.enter(ticket) }
         travel_to(time_two) do
-          debuger
           juso.exit(ticket)
         end
       end
