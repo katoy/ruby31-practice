@@ -6,6 +6,10 @@ SimpleCov.start
 require 'minitest/autorun'
 require 'minitest/reporters'
 
+require 'active_support/all'
+require 'active_support/testing/time_helpers'
+Time.zone = 'Asia/Tokyo'
+
 Minitest::Reporters.use! Minitest::Reporters::ProgressReporter.new
 # $ export MINITEST_REPORTER=ProgressReporter
 #

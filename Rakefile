@@ -13,8 +13,8 @@ Rake::TestTask.new do |t|
   t.pattern = 'test/**/*_test.rb'
 end
 
-Rake::TestTask.new do |_t|
-  RSpec::Core::RakeTask.new(:spec)
-end
+# Rake::TestTask.new do |_t|
+#  RSpec::Core::RakeTask.new(:spec)
+# end
 
-task default: :test
+# task default: :test
